@@ -9,26 +9,31 @@ import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 import org.openqa.selenium.remote.RemoteWebElement;
 import org.openqa.selenium.support.PageFactory;
 
-public class LoginPage {
+public class LoginPage extends BasePage {
 
     @AndroidFindBy(id = "login_username")
     @iOSXCUITFindBy(accessibility = "login_username")
     private RemoteWebElement emailField;
+
     @AndroidFindBy(id = "login_password")
     @iOSXCUITFindBy(accessibility = "login_password")
     private RemoteWebElement passwordField;
+
     @AndroidFindBy(id = "login_button")
     @iOSXCUITFindBy(accessibility = "login_button")
     private RemoteWebElement loginButtton;
 
-    public LoginPage(AppiumDriver<RemoteWebElement> driver) {
-        PageFactory.initElements(new AppiumFieldDecorator(driver), this);
+    public void fillEmail(){
+        emailField.sendKeys("qazando@gmail.com");
     }
 
-    public void login() {
-        emailField.sendKeys("qazando@gmail.com");
-        passwordField.sendKeys("1234");
+    public void fillPassword(){
+        passwordField.sendKeys("123456");
+    }
+
+    public void clickLoginButton(){
         loginButtton.click();
     }
+
 
 }
