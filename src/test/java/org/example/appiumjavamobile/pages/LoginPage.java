@@ -23,12 +23,12 @@ public class LoginPage extends BasePage {
     @iOSXCUITFindBy(accessibility = "login_button")
     private RemoteWebElement loginButtton;
 
-    public void fillEmail(){
-        emailField.sendKeys("qazando@gmail.com");
+    public void fillEmail(String email){
+        emailField.sendKeys(email);
     }
 
-    public void fillPassword(){
-        passwordField.sendKeys("123456");
+    public void fillPassword(String password){
+        passwordField.sendKeys(password);
     }
 
     public void clickLoginButton(){
