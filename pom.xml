@@ -16,6 +16,7 @@
         <junit-version>5.10.1</junit-version>
         <appium-version>7.3.0</appium-version>
         <cucumber-version>7.15.0</cucumber-version>
+        <cluecumber-version>2.8.0</cluecumber-version>
     </properties>
 
     <dependencies>
@@ -41,8 +42,34 @@
             <version>${cucumber-version}</version>
             <scope>test</scope>
         </dependency>
-
+        <dependency>
+            <groupId>com.trivago.rta</groupId>
+            <artifactId>cluecumber-report-plugin</artifactId>
+            <version>${cluecumber-version}</version>
+        </dependency>
 
     </dependencies>
+   <build>
+       <plugins>
+           <plugin>
+               <groupId>com.trivago.rta</groupId>
+               <artifactId>cluecumber-report-plugin</artifactId>
+               <version>${cluecumber-version}</version>
+               <executions>
+                   <execution>
+                       <id>report</id>
+                       <phase>post-integration-test</phase>
+                       <goals>
+                           <goal>reporting</goal>
+                       </goals>
+                   </execution>
+               </executions>
+               <configuration>
+                   <sourceJsonReportDirectory>${project.build.directory}/reports</sourceJsonReportDirectory>
+                   <generatedHtmlReportDirectory>${project.build.directory}/formated-report</generatedHtmlReportDirectory>
+               </configuration>
+           </plugin>
+       </plugins>
+   </build>
 
 </project>
